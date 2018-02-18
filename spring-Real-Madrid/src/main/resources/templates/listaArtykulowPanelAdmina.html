@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+<!-- pliki css: -->
+<link th:href="@{/css/styl.css}" rel="stylesheet" media="screen" />
+<link th:href="@{/css/animacje.css}" rel="stylesheet" media="screen" />
+<link th:href="@{/css/responsywny.css}" rel="stylesheet" media="screen" />
+<!-- czcionka -->
+<!-- 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin,latin-ext" rel="stylesheet"/> -->
+<link rel="shortcut icon" th:href="@{/images/favicon.png}"
+	type="image/gif" />
+
+<title>Panel admina - edytuj artykul</title>
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container pod-menu">
+		<h1>Panel edycji artykulu</h1>
+		<div th:if="${param.edytowano}">
+			<div class="alert alert-info">
+				<p>Artykul edytowano!</p>
+			</div>
+		</div>
+		<div th:if="${param.usunieto}">
+			<div class="alert alert-info">
+				<p>Artykul usunieto!</p>
+			</div>
+		</div>
+		<div class="table-wrapper">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>Temat</th>
+						<th>Data dodania</th>
+						<th>Autor</th>
+						<th>Akcja</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="singleArticle: ${listaArtykulow}" th:object="${singleArticle}">
+						<td th:text="*{title}">Temat artykulu</td>
+						<td th:text="*{createdOn}">Data dodania</td>
+						<td th:text="|*{author.firstName} *{author.lastName}|">autorNewsa</td>
+						<td>
+							<ul>
+								<li>
+									<a th:href="@{'/panelAdmina/edytujArtykul/' + *{articleId}}">
+										<span class="glyphicon glyphicon-edit"></span>
+										<label>Edytuj</label>
+									</a>
+								</li>
+								<li>
+									<a th:href="@{'/panelAdmina/usunArtykul/' + *{articleId}}">
+										<span class="glyphicon glyphicon-floppy-remove"></span>
+										<label>Usun</label>
+									</a>
+								</li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

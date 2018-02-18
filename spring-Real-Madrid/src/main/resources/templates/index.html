@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    
+   	<!-- pliki css: -->
+	<link th:href="@{/css/styl.css}" rel="stylesheet" media="screen"/>
+	<link th:href="@{/css/animacje.css}" rel="stylesheet" media="screen"/>
+	<link th:href="@{/css/responsywny.css}" rel="stylesheet" media="screen"/>
+	<!-- czcionka -->
+<!-- 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin,latin-ext" rel="stylesheet"/> -->
+	<link rel="shortcut icon" th:href="@{/images/favicon.png}" type="image/gif" />
+
+    <title>Strona glowna</title>
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+    <!-- "Karuzela" zdjęć -->
+	<div id="zdjecia" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#zdjecia" data-slide-to="0" class="active"></li>
+			<li data-target="#zdjecia" data-slide-to="1"></li>
+			<li data-target="#zdjecia" data-slide-to="2"></li>
+		</ol>
+		<div class="carousel-inner">
+			<div class="item active">
+				<img src="images/zdjecia/1.jpg" alt="zdjecie 1" class="img-responsive"/>
+				<div class="carousel-caption">
+					<h1>Serwis fanów Realu Madryt!</h1>
+					<p><br />Stworzony z myślą o każdym użytkowniku. Zobacz, co dla Ciebie przygotowaliśmy.</p>
+				</div>
+			</div>
+			<div class="item">
+				<img src="images/zdjecia/2.jpg" alt="zdjecie 2" class="img-responsive"/>
+				<div class="carousel-caption">
+					<h1>33 Mistrzostwo Hiszpanii!</h1>
+				</div>
+			</div>
+			<div class="item">
+				<img src="images/zdjecia/3.jpg" alt="zdjecie 3" class="img-responsive"/>
+				<div class="carousel-caption">
+					<h1>Przygotowania do finału Ligi Mistrzów w Cardiff</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Koniec "Karuzeli" zdjęć -->
+	<div th:replace="fragments/footer :: footer"></div>
+<script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

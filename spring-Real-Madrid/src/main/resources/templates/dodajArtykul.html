@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    
+   	<!-- pliki css: -->
+	<link th:href="@{/css/styl.css}" rel="stylesheet" media="screen"/>
+	<link th:href="@{/css/animacje.css}" rel="stylesheet" media="screen"/>
+	<link th:href="@{/css/responsywny.css}" rel="stylesheet" media="screen"/>
+	<!-- czcionka -->
+<!-- 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin,latin-ext" rel="stylesheet"/> -->
+	<link rel="shortcut icon" th:href="@{/images/favicon.png}" type="image/gif" />
+
+    <title>Panel admina - dodaj artykul</title>
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+	<div class="container pod-menu">
+		<h1>Panel dodawania artykulow</h1>
+		<div th:if="${param.sukces}">
+               <div class="alert alert-info">
+                   <p>Artykul pomyslnie dodano!</p>
+               </div>
+        </div>
+        <div th:if="${param.bladDodawania}">
+               <div class="alert alert-danger">
+                   <p>Wszystkie pola musza zostac wypelnione!</p>
+               </div>
+        </div>
+		<form class="form-group" action="#" method="post" th:action="@{/saveArticle}" th:object="${artykul}">
+			<p>Temat artykułu: <input type="text" th:field="*{title}" class="form-control"/></p>
+			<p>Źródło: <input type="text" th:field="*{source}" class="form-control"/></p>
+			<p>Treść artykułu: <textarea  th:field="*{content}" class="form-control" rows="8" cols="1"></textarea></p>
+			<input type="submit" value="Zapisz" />
+		</form>
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+<script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

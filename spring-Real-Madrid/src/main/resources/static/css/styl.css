@@ -1,0 +1,360 @@
+/* główne */
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	color: #34495e;
+	background-color: #fff;
+}
+
+.btn-success {
+	background-color: #5c6166;
+	border-color: #5c6166;
+	margin-top: 4rem;
+}
+
+.btn-success:active, .btn-success:visited, .btn-success:focus {
+	background-color: #5c6166;
+	border-color: #5c6166;
+}
+.btn-success:hover {
+	background-color: #101010;
+	border-color: #101010;
+}
+
+
+/* typografia */
+
+h1, h2, h3, h4, h5, h6 {
+	color: #5c6166;
+	font-weight: 300;
+}
+
+h1 {
+	font-size: 6rem;
+}
+
+h2 {
+	font-size: 4rem;
+	line-height: 6rem;
+}
+
+h3 {
+	font-size: 2.5rem;
+	line-height: 3rem;
+}
+
+h4 {
+	font-size: 2rem;
+	line-height: 3rem;
+	color: #5c6166;
+}
+
+a:hover, a:visited, a:link, a:active, a:focus {
+	text-decoration: none;
+}
+
+/* MENU GÓRNE */
+#menu {
+	background-color: #101010;
+}
+.navbar {
+	background-color: #101010;
+	font-size: 1.7rem;
+	color: #fff;
+	padding-top: 3rem;
+	border-color: #101010;
+}
+
+.navbar-outer {
+	width: 1200px;
+}
+
+.navbar-inverse .navbar-nav >li >a {
+	margin-left: 5px;
+	border: 1px solid transparent;
+	line-height: 1rem;
+}
+
+.navbar-inverse .navbar-nav >li >a:hover {
+	display: block;
+	color: orange;
+	border: 1px solid transparent;
+	border-color: orange;
+	line-height: 1rem;
+	border-radius: 4px;
+	transition: all 0.7s ease;
+}
+
+.navbar-inverse .navbar-nav >.active >a{
+	display: block;
+	border: 1px solid transparent;
+	background-color: #101010;
+	border-radius: 4px;
+	border-color: #9d9d9d;
+	color: #9d9d9d;
+}
+
+.navbar-inverse .navbar-nav >.active >a:hover {
+	color: orange;
+	background-color: #101010;
+}
+
+#herb img {
+	display: block;
+	float: none;
+	margin-top: -3.5rem;
+}
+
+/* MENU Karuzela zdjec */
+
+#zdjecia {
+	padding-top: 9rem;
+}
+
+.carousel .item {
+	width: 100%;
+	max-height: 500px;
+}
+
+.carousel .item img {
+	width: 100%;
+}
+
+.carousel .carousel-control {
+	background: none;
+	border: none;
+	top: 50%;
+}
+
+.carousel-caption {
+	top: 60px;
+	bottom: auto;
+}
+
+.carousel-caption h1 {
+	text-transform: uppercase;
+	font-weight: 600;
+	line-height: 7rem;
+	color: #fff;
+}
+
+.carousel-caption p {
+	font-size: 2.5rem;
+	font-weight: 400;
+	line-height: 4rem;
+	color: #fff;
+}
+
+
+/* skład */
+#sklad {
+	padding-top: 8rem;
+	padding-bottom: 4rem;
+	text-align: center;
+}
+
+#sklad .thumbnail {
+	background-color: black;
+	border-radius: 6px;
+}
+
+#sklad .thumbnail h4 {
+	color: #fff;
+}
+
+#sklad a:hover {
+	-webkit-animation: tada .8s;
+	animation: tada .8s;
+
+}
+
+/* aktualnosci */
+#aktualnosci {
+	padding-top: 10rem;
+	padding-bottom: 5rem;
+	text-align: center;
+	color: #3F3F3F;
+}
+
+.aktualnosci_panel {
+	padding-top: 1rem;
+	padding-bottom: 2rem;
+	text-align: left;
+	border-bottom: solid 1px #ADADAD;
+}
+
+.aktualnosci_panel:hover {
+	background-color: #DEDEDE;
+}
+
+.aktualnosci_naglowek {
+	padding-bottom: 1rem;
+	border-bottom: solid 1px #ADADAD;
+}
+
+.nav-pills > li {
+	float: none;
+	padding-left: 1rem;
+	margin-top: 3rem;
+	display: inline-block;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:focus,
+.nav-pills > li.active > a:hover {
+	background-color: #101010;
+	color: #fff;
+	border: 1px solid transparent;
+	border-color: #101010;
+}
+
+.nav-pills > li > a {
+	border: 1px solid #5c6166;
+	background-color: #5c6166;
+	color: #fff;
+}
+
+.nav-pills > li > a:hover {
+	border: 1px solid orange;
+	background-color: #101010;
+	color: orange;
+	transition: all 0.3s ease;
+	-webkit-animation: rubberBand .6s;
+	animation: rubberBand .6s;
+}
+
+
+
+/* tytuły */
+
+#tytuly {
+	padding-top: 10rem;
+	padding-bottom: 5rem;
+	background-color: #3D3D3D; 
+	text-align: center;
+}
+
+.liczba_pucharow h4 {
+	font-weight: 600;
+	font-size: 3rem;
+}
+
+.liczba_pucharow h3 {
+	font-weight: 500;
+}
+
+.liczba_pucharow img {
+	position: relative;
+	left: 0;
+	top: 0;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.naglowek-tytuly h3 {
+	color: #fff;
+}
+
+/* stadion */
+
+#stadion {
+	padding-top: 10rem;
+	padding-bottom: 3rem;
+	text-align: center;
+}
+
+.stadion_naglowek {
+	padding-bottom: 1rem;
+}
+
+.stadion_zdj {
+	margin-bottom: 2rem;
+}
+
+.stadion_zdj a:hover img {
+	-webkit-animation: pulse .8s;
+	animation: pulse .8s;
+	opacity: 0.8;
+}
+
+
+/* kontakt */
+
+#kontakt {
+	padding-top: 8rem;
+	padding-bottom: 4rem;
+	text-align: left;
+}
+
+#kontakt button:hover {
+	-webkit:animation: wobble .5s;
+	animation: wobble .5s;
+}
+
+#kontakt .przycisk_wyslij {
+	text-align: center;
+}
+
+/* tabela */
+#tabela {
+	padding-top: 10rem;
+	padding-bottom: 3rem;
+	text-align: center;
+}
+
+#tabela .medal_tabela img{
+	display: block;
+	float: none;
+}
+
+#zaloguj {
+	padding-top: 15rem;
+	padding-bottom: 4rem;
+	text-align: center;
+}
+
+#zaloguj input:focus {
+    border-color: #5c6166;
+}
+
+.pod-menu {
+	padding-top: 15rem;
+	padding-bottom: 4rem;
+}
+
+/* stopka */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 80px;
+}
+#stopka {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 120px;
+	text-align: left;
+	background-color: #262626;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+}
+
+#stopka h4 {
+	color: #fff;
+}
+
+#stopka img {
+	float: right;
+	margin-right: 2rem;
+	width: 4rem;
+}
+
+#stopka a:hover img {
+	-webkit-animation: bounce .8s;
+	animation: bounce .8s;
+}

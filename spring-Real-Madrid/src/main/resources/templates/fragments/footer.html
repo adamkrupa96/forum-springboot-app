@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+	    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+	    
+	   	<!-- pliki css: -->
+		<link th:href="@{/css/styl.css}" rel="stylesheet" media="screen"/>
+		<link th:href="@{/css/animacje.css}" rel="stylesheet" media="screen"/>
+		<link th:href="@{/css/responsywny.css}" rel="stylesheet" media="screen"/>
+		<!-- czcionka -->
+	<!-- 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin,latin-ext" rel="stylesheet"/> -->
+		<link rel="shortcut icon" th:href="@{/images/favicon.png}" type="image/gif" />
+	
+	    <title>Stopka</title>
+	</head>
+	<body>
+		<!-- Stopka -->
+	<div class="container-stopki" th:fragment="footer">
+		<section id="stopka">
+			<div class="container footer">
+				<footer class="row">
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<h4>Copyright 2017 &copy; Adam Krupa</h4>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+						<a href="#"><img th:src="@{/images/icons/facebook.png}" alt="" class="img-responsive"/></a>
+						<a href="#"><img th:src="@{/images/icons/googleplus.png}" alt="" class="img-responsive"/></a>
+						<a href="#"><img th:src="@{/images/icons/twitter.png}" alt="" class="img-responsive"/></a>
+						<a href="#"><img th:src="@{/images/icons/vimeo.png}" alt="" class="img-responsive"/></a>
+					</div>
+				</footer>
+			</div>
+		</section>
+	</div>
+		<!-- koniec stopki -->
+	</body>
+</html>

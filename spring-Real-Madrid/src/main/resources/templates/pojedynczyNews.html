@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+<!-- pliki css: -->
+<link th:href="@{/css/styl.css}" rel="stylesheet" media="screen" />
+<link th:href="@{/css/animacje.css}" rel="stylesheet" media="screen" />
+<link th:href="@{/css/responsywny.css}" rel="stylesheet" media="screen" />
+<link th:href="@{/css/pages/pojedynczyNews.css}" rel="stylesheet"
+	media="screen" />
+<!-- czcionka -->
+<!-- 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin,latin-ext" rel="stylesheet"/> -->
+<link rel="shortcut icon" th:href="@{/images/favicon.png}"
+	type="image/gif" />
+
+<title>Aktualnosci</title>
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container pod-menu">
+		<div class="row">
+			<div class="tab-content aktualnosci_ikony">
+				<div
+					class="col-xs-12 col-sm-12 col-md-12 col-lg-12 panel aktualnosci_panel"
+					th:object="${artykul}">
+					<div class="panel-heading">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<img th:src="@{/images/aktualnosci/elclasico.jpg}" alt=""
+								class="img-responsive img-rounded" />
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<h6
+								th:text="|Autor: *{author.firstName} *{author.lastName}, źródło: *{source}, data dodania: *{#dates.format(createdOn, 'dd MMM yyyy, HH:mm:ss')}|">
+								<p>Autor | Zrodlo | Data dodania</p>
+								<span class="glyphicon glyphicon-chevron-right"></span>
+							</h6>
+							<h3 th:text="*{title}">Tytul newsa</h3>
+						</div>
+					</div>
+					<div class="panel-body">
+
+						<p th:text="*{content}">Tego lata fani z całego świata aż trzy
+							razy będą mogli obejrzeć pojedynek Realu Madryt z FC Barceloną -
+							raz w ramach towarzyskiego turnieju w USA i dwukrotnie w
+							Superpucharze Hiszpanii. Zwycięstwo Katalończyków w tegorocznej
+							edycji Copa del Rey spowodowało, że po raz pierwszy od 2012 roku
+							dojdzie do starcia obu ekip w połowie sierpnia.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row dodaj-komentarz" sec:authorize="!isAuthenticated()">
+				<div class="col-sm-12 col-md-12">
+					<p>Aby dodac komentarz, musisz sie zalogowac</p>
+				</div>
+			</div>
+			<div class="tab-pane active" id="add-comment"
+				sec:authorize="isAuthenticated()" th:object="${comment}">
+				<form action="#"
+					th:action="@{'/addComment/' + ${artykul.articleId}}" method="post"
+					class="form-horizontal" id="commentForm" role="form">
+					<p class="error-message"
+	                   th:if="${#fields.hasGlobalErrors()}"
+	                   th:each="error : ${#fields.errors('global')}"
+	                   th:text="${error}">Bład walidacji
+	                </p>
+					<div class="form-group">
+						<span class="col-md-2 pull-left image"> <img
+							th:src="@{/images/icons/user_1.jpg}" alt="avatar"
+							class="img-circle avatar" /> <label th:text="${userOnlineName}"></label>
+						</span> 
+						<label for="komentarz" class="col-md-1 control-label">Komentarz</label>
+						<div class="col-md-9">
+							<textarea class="form-control" name="addComment" id="komentarz"
+								rows="5" th:field="*{content}"></textarea>
+							<div th:if="${param.blad}">
+				               <div class="alert alert-warning">
+				                   <p>Nie można dodać pustego komentarza!</p>
+				               </div>
+				        	</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="uploadMedia"
+							class="col-md-offset-1 col-md-2 control-label">Dodaj link</label>
+						<div class="col-md-9">
+							<div class="input-group">
+								<div class="input-group-addon">http://</div>
+								<input type="text" class="form-control" name="uploadMedia"
+									id="uploadMedia" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-3 col-md-9">
+							<button class="btn btn-success btn-circle text-uppercase"
+								type="submit" id="submitComment">
+								<span class="glyphicon glyphicon-pencil"></span> Dodaj komentarz
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="row">
+				<div class="col-sm-8" th:each="singleComment: ${allComments}"
+					th:object="${singleComment}">
+					<div class="panel panel-white post panel-shadow">
+						<div class="post-heading">
+							<div class="pull-left image">
+								<img th:src="@{/images/icons/user_1.jpg}"
+									class="img-circle avatar" alt="user profile image" />
+							</div>
+							<div class="pull-left meta">
+								<div class="title h5">
+									<a href="#"> <label
+										th:text="|*{author.firstName} *{author.lastName}|">User</label>
+									</a> <span>dodał komentarz.</span>
+								</div>
+								<h6 class="text-muted time"
+									th:text="|*{#dates.format(createdOn, 'dd MMM yyyy, HH:mm:ss')}|">date
+									dd mmm...</h6>
+							</div>
+						</div>
+						<div class="post-description">
+							<p th:text="*{content}">Tresc komentarza</p>
+							<div class="stats">
+								<a href="#" class="btn btn-default stat-item"> <i
+									class="glyphicon glyphicon-thumbs-up"></i> 2
+								</a> <a href="#" class="btn btn-default stat-item"> <i
+									class="glyphicon glyphicon-thumbs-down"></i> 12
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>

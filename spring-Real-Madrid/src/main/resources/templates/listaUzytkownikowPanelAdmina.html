@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+<!-- pliki css: -->
+<link th:href="@{/css/styl.css}" rel="stylesheet" media="screen" />
+<link th:href="@{/css/animacje.css}" rel="stylesheet" media="screen" />
+<link th:href="@{/css/responsywny.css}" rel="stylesheet" media="screen" />
+<!-- czcionka -->
+<!-- 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin,latin-ext" rel="stylesheet"/> -->
+<link rel="shortcut icon" th:href="@{/images/favicon.png}"
+	type="image/gif" />
+
+<title>Panel admina - lista uzytkownikow</title>
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container pod-menu">
+		<h1>Lista zarejestrowanych uzytkownikow</h1>
+		<div class="table-wrapper">
+			<div th:if="${param.edytowanoUzytkownika}">
+			    <div class="alert alert-info">
+			        <p>Pomyslnie edytowano informacje o uzytkowniku!</p>
+			    </div>
+			</div>
+			<div th:if="${param.usunieto}">
+			    <div class="alert alert-info">
+			        <p>Pomyslnie usunieto uzytkownika!</p>
+			    </div>
+			</div>
+			<div th:if="${param.bladUsuwania}">
+			    <div class="alert alert-danger">
+			        <p>Nie mozna usunac uzytkownika ktory jest adminem!</p>
+			    </div>
+			</div>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Uzytkownik</th>
+						<th>Adres email</th>
+						<th>Role uzytkownika</th>
+						<th>Data rejestracji</th>
+						<th>Akcja</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="singleUser: ${listaUzytkownikow}" th:object="${singleUser}">
+						<td th:text="|*{firstName} *{lastName}">Jan kowalski</td>
+						<td th:text="*{email}">user@mail.com</td>
+						<td>
+							<ul>
+								<li th:each="singleRole: *{roles}" th:text="${singleRole.name}">user_role</li>
+							</ul>
+						</td>
+						<td th:text="*{registrationDate}">data rejestracji</td>
+						<td>
+							<ul>
+								<li>
+									<a th:href="@{'/panelAdmina/edytujUzytkownika/' + *{userId}}">
+										<span class="glyphicon glyphicon-edit" style="float: right;"></span>
+										<label>Edytuj</label>
+									</a>
+								</li>
+								<li>
+									<a th:href="@{'/panelAdmina/usunUzytkownika/' + *{userId}}">
+										<span class="glyphicon glyphicon-floppy-remove" style="float: right;"></span>
+										<label>Usun</label>
+									</a>
+								</li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+	<script type="text/javascript"
+		th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+	<script type="text/javascript"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

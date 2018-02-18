@@ -1,0 +1,13 @@
+#rejestracja {
+	margin-top: 120px;
+	margin-bottom: 150px;
+}
+
+div.form-group:last-of-type {
+	text-align: center;
+	margin-top: -2em;
+}
+div.form-group:last-of-type > span {
+	display: block;
+	padding-top: 10px;
+}

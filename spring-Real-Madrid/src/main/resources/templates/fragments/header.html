@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+>
+<head>
+	<meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    
+   	<!-- pliki css: -->
+	<link th:href="@{/css/styl.css}" rel="stylesheet" media="screen"/>
+	<link th:href="@{/css/animacje.css}" rel="stylesheet" media="screen"/>
+	<link th:href="@{/css/responsywny.css}" rel="stylesheet" media="screen"/>
+	<!-- czcionka -->
+<!-- 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin,latin-ext" rel="stylesheet"/> -->
+	<link rel="shortcut icon" th:href="@{/images/favicon.png}" type="image/gif" />
+</head>
+<body>
+<!-- MENU GÓRNE: -->
+		<header id="menu" class="navbar-fixed-top" th:fragment="header">
+			<div class="container">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<nav class="navbar navbar-inverse" role="navigation" id="pasek_nawigacyjny">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MENU-GLOWNE">
+									<span class="sr-only">Nawigacja</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<div id="herb">
+									<a th:href="@{/}" class="navbar-brand"><img th:src="@{/images/herb.png}" alt="herb Realu Madryt" class="img-responsive" /></a>
+								</div>
+							</div>
+							<div id="MENU-GLOWNE" class="collapse navbar-collapse">
+								<ul class="nav navbar-nav navbar-right" id="lista_nawigacja">
+									<li class="active"><a th:href="@{/}">Home</a></li>
+									<li><a th:href="@{/aktualnosci}">Aktualności</a></li>
+									<li><a href="#sklad">Skład</a></li>
+									<li><a href="#tytuly">Tytuły</a></li>
+									<li><a href="#tabela">Tabela</a></li>
+									<li><a href="#stadion">Stadion</a></li>
+									<li sec:authorize="!isAuthenticated()"><a th:href="@{/zaloguj}">Zaloguj</a></li>
+									<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/panelAdmina}">Panel admina</a></li>
+									<li sec:authorize="hasRole('ROLE_USER')"><a th:href="@{/kontoUzytkownika}">Profil</a></li>
+									<li sec:authorize="isAuthenticated()"><a th:href="@{/wyloguj}">Wyloguj</a></li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<!-- KONIEC MENU GÓRNEGO: -->
+
+<script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
