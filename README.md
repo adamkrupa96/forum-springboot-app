@@ -1,5 +1,5 @@
 # Forum for Real Madrid fans.
-Application that uses a Spring Boot. Admin can write articles (news) and users can comment them.
+Application that uses a Spring Boot. Admin can write and post articles (news) and users can comment them.
 
 # Technologies
 <ul>
