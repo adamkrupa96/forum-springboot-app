@@ -11,7 +11,7 @@ Application that uses a Spring Boot. Admin can write and post articles (news) an
 </ul>
 
 # Running
-Go into the project dir and type mvn spring-boot:run, then open your browser and go to http://localhost:8080.
+Go into the project dir and type <code>mvn spring-boot:run</code>, then open your browser and go to <code>http://localhost:8080</code>.
 
 Login details for the admin: <br />
 login: admin@mail.com <br />
